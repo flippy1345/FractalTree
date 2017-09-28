@@ -49,5 +49,5 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.draw()
-  branch(center.width, center.height + 250, 100, - 90, bend)
+  branch(center.width, center.height + 250, 200, - 90, bend)
 end
