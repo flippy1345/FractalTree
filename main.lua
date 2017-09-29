@@ -1,6 +1,6 @@
 local screenWidth, screenHeight = 0, 0
 local center = {}
-local growLenght = 0
+local growLenght = 100
 local bend = 0
 
 function map(currentRange, minRange, maxRange, minReturnRange, maxReturnRange)
@@ -24,9 +24,6 @@ function branch(startPosX, startPosY, lenght, startAngle, bend, side)
     lenght = lenght - (lenght * 0.3)
     branch(endPosX, endPosY, lenght, startAngle + bend, bend)-- right
     branch(endPosX, endPosY, lenght, startAngle - 70 + bend, bend)-- left
-    --print()
-    --fractalWidthStart = center.width - 200
-    --fractalWidthEnd =  center.width + startPosX
   end
 end
 
@@ -77,7 +74,5 @@ end
 
 
 function love.draw()
-  --love.graphics.line(fractalWidthStart, 0, fractalWidthStart, screenHeight)
-  --love.graphics.line(fractalWidthEnd, 0, fractalWidthEnd, screenHeight)
   branch(center.width, center.height + 250, growLenght, - 90, bend, 0)
 end
