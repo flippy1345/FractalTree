@@ -27,6 +27,26 @@ function branch(startPosX, startPosY, lenght, startAngle, bend, side)
   end
 end
 
+function drawButton(xI, yI, width, height)
+  love.graphics.setColor(200, 160, 200)
+  love.graphics.rectangle("fill", xI, yI, width, height)
+
+  function love.touchpressed(id, x, y, dx, dy, pressure)
+    if x >= xI and y >= yI and x <= width and y <= height then
+      growLenght = math.random(1, 200)
+      bend = math.random(-100, 100)
+    end
+  end
+  function love.mousepressed(x, y, button, isTouch)
+    if x >= xI and y >= yI and x <= width and y <= height then
+      growLenght = math.random(1, 200)
+      bend = math.random(-100, 100)
+    end
+  end
+end
+
+
+
 function love.load(arg)
   love.keyboard.setKeyRepeat(true)
 end
@@ -75,4 +95,5 @@ end
 
 function love.draw()
   branch(center.width, center.height + 250, growLenght, - 90, bend, 0)
+  drawButton(10, 10, 50, 50)
 end
