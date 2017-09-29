@@ -27,20 +27,18 @@ function branch(startPosX, startPosY, lenght, startAngle, bend, side)
   end
 end
 
-function drawButton(xI, yI, width, height)
+function drawButton(xI, yI, width, height, onPressFunction)
   love.graphics.setColor(200, 160, 200)
   love.graphics.rectangle("fill", xI, yI, width, height)
 
   function love.touchpressed(id, x, y, dx, dy, pressure)
     if x >= xI and y >= yI and x <= width and y <= height then
-      growLenght = math.random(1, 200)
-      bend = math.random(-100, 100)
+      onPressFunction()
     end
   end
   function love.mousepressed(x, y, button, isTouch)
     if x >= xI and y >= yI and x <= width and y <= height then
-      growLenght = math.random(1, 200)
-      bend = math.random(-100, 100)
+      onPressFunction()
     end
   end
 end
@@ -95,5 +93,10 @@ end
 
 function love.draw()
   branch(center.width, center.height + 250, growLenght, - 90, bend, 0)
-  drawButton(10, 10, 50, 50)
+  drawButton(20, 20, 150, 150,
+    function()
+      growLenght = math.random(1, 200)
+      bend = math.random(-100, 100)
+    end
+  )
 end
